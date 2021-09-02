@@ -7,13 +7,13 @@ const DB_SEQ_PATH = "./db/competency_seq.json";
 const get = () => {
   return fsPromises.readFile(DB_PATH).then((result) => {
     resultJson = JSON.parse(result);
-    return resultJson;
+    return Promise.resolve(resultJson);
   });
 };
 
 const create = async (dataObj) => {
   if (!dataObj.skill || !dataObj.level || !dataObj.selfClaim) {
-    return Promise.reject("All field required");
+    return Promise.reject( new Error("All field required"));
   }
   let dataSeq = fs.readFileSync(DB_SEQ_PATH);
   var dataSeqJson = JSON.parse(dataSeq);
@@ -44,7 +44,7 @@ const create = async (dataObj) => {
 
 const update = (id, newData) => {
   if (!newData.skill || !newData.level || !newData.selfClaim) {
-    return Promise.reject("All field required");
+    return Promise.reject( new Error("All field required"));
   }
   return fsPromises.readFile(DB_PATH)
     .then((result) => {

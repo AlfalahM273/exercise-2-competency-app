@@ -15,10 +15,14 @@ app.use(function (req, res, next) {
   next();
 });
 
+const competencyRouter = require('./routes/competency');
+
 // adding routes
-app.use("/", (req, res) => {
-  res.status(200).json("Hello");
-});
+app.use('/api/competency', competencyRouter);
+
+// app.use("/", (req, res) => {
+//   res.status(200).json("Hello");
+// });
 
 app.all("*", (req, res) => {
   res.status(404).json("Not Found");

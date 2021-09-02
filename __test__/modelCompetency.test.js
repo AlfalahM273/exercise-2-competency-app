@@ -40,7 +40,7 @@ describe("Insert Data", () => {
     };
     await expect(competencyModel.create(dataObj)).rejects.toBeDefined();
     await competencyModel.create(dataObj).catch((err) => {
-      expect(err).toBe("All field required");
+      expect(err.message).toBe("All field required");
     });
   });
 
@@ -52,7 +52,7 @@ describe("Insert Data", () => {
     };
     await expect(competencyModel.create(dataObj)).rejects.toBeDefined();
     await competencyModel.create(dataObj).catch((err) => {
-      expect(err).toBe("All field required");
+      expect(err.message).toBe("All field required");
     });
   });
 });
@@ -105,7 +105,7 @@ describe("Update Data", () => {
     let id = -1;
     await expect(competencyModel.update(id, dataObj)).rejects.toBeDefined();
     await competencyModel.update(id, dataObj).catch((err) => {
-      expect(err).toBe("All field required");
+      expect(err.message).toBe("All field required");
     });
   });
 });
